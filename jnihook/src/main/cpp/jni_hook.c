@@ -26,16 +26,16 @@ static void init_jni_hook(JNIEnv *env, jobject foo, void *fooJNI) {
     }
 }
 
-int hook_jni(JNIEnv *env, jobject method, void *newEntrance, void **origin_entrance) {
+int hook_jni(JNIEnv *env, jobject method, void *new_entrance, void **origin_entrance) {
     if (jni_entrance_index == -1) {
         return -1;
     }
     void **target_art_method = get_art_method(env, method);
-    if (target_art_method[jni_entrance_index] == newEntrance) {
+    if (target_art_method[jni_entrance_index] == new_entrance) {
         return 0;
     }
     *origin_entrance = target_art_method[jni_entrance_index];
-    target_art_method[jni_entrance_index] = newEntrance;
+    target_art_method[jni_entrance_index] = new_entrance;
     return 1;
 }
 
