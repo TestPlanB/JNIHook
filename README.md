@@ -22,7 +22,7 @@ JniHook.jniHookInit()
 * newEntrance：native层的代理函数指针
 * originEntrance：原函数指针的指针（指针的地址）
 ```
-int hook_jni(JNIEnv *env, jobject。method, void *newEntrance, void **originEntrance)
+int hook_jni(JNIEnv *env, jobject method, void *new_entrance, void **origin_entrance)
 ```
 返回值：1（hook 成功） 0（当前已经hook） -1（hook失败）
 ## unhook jni函数
