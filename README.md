@@ -1,6 +1,8 @@
 # JniHook
 一个简单的工具库，专门处理Jni 函数调用Hook
 
+原理讲解：https://juejin.cn/post/7268894037464367140
+
 # 使用指南
 ## 开启prefad
 ```
