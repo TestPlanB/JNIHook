@@ -14,7 +14,7 @@ build.gradle 中开启prefab
 JniHook.jniHookInit()
 ```
 
-## hookjni函数
+## hook jni函数
 需要的时候调用hook_jni函数即可 
 
 * env:jni 环境 
@@ -25,7 +25,7 @@ JniHook.jniHookInit()
 int hook_jni(JNIEnv *env, jobject。method, void *newEntrance, void **originEntrance)
 ```
 返回值：1（hook 成功） 0（当前已经hook） -1（hook失败）
-## unhookjni函数
+## unhook jni函数
 如果需要解除hook，调用unhook_jni
 * env:jni 环境 
 * method：java层中hook的jni函数，即Method
