@@ -43,3 +43,7 @@ void unhook_jni(JNIEnv *env, jobject method, void *origin_entrance)
 ## 环境准备
 建议直接用最新的稳定版本Android Studio打开工程。目前项目已适配`Android Studio Arctic Fox | 2022.3.1`
 ### 
+
+## 感谢
+[btrace]([https://www.runoob.com](https://github.com/bytedance/btrace)https://github.com/bytedance/btrace)
+
