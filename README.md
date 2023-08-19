@@ -19,8 +19,8 @@ JniHook.jniHookInit()
 
 * env:jni 环境 
 * method：java层中需要hook的jni函数，即Method
-* newEntrance：native层的代理函数指针
-* originEntrance：原函数指针的指针（指针的地址）
+* new_entrance：native层的代理函数指针
+* origin_entrance：原函数指针的指针（指针的地址）
 ```
 int hook_jni(JNIEnv *env, jobject method, void *new_entrance, void **origin_entrance)
 ```
