@@ -25,3 +25,6 @@ JNIEXPORT void JNICALL
 Java_com_example_jnihook_MainActivity_unhooktest(JNIEnv *env, jobject thiz, jobject method) {
     unhook_jni(env,method,test_jni_original);
 }
+
+
+

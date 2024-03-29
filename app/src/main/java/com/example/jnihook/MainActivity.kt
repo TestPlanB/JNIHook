@@ -1,8 +1,8 @@
 package com.example.jnihook
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
-import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import com.example.jnihook.databinding.ActivityMainBinding
 import com.pika.jnihook.JniHook
 import java.lang.reflect.Method
@@ -31,6 +31,10 @@ class MainActivity : AppCompatActivity() {
 
         binding.unhook.setOnClickListener {
             unhooktest(hookMethod)
+        }
+
+        binding.entry.setOnClickListener {
+            startActivity(Intent(this,DispatchTableHook::class.java))
         }
 
     }

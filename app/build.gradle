@@ -7,6 +7,10 @@ android {
     namespace 'com.example.jnihook'
     compileSdk 32
 
+    packagingOptions {
+        pickFirst '**/libxdl.so'
+    }
+
     defaultConfig {
         applicationId "com.example.jnihook"
         minSdk 23
