@@ -1,31 +1,21 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
 }
 
 android {
-    namespace 'com.example.jnihook'
-    compileSdk 32
-
-    packagingOptions {
-        pickFirst '**/libxdl.so'
-    }
+    namespace 'com.example.jnitest'
+    compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.jnihook"
         minSdk 23
-        targetSdk 32
-        versionCode 1
-        versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
         externalNativeBuild {
             cmake {
-                arguments '-DANDROID_STL=c++_shared'
+                cppFlags ""
             }
-        }
-        ndk {
-            abiFilters 'armeabi-v7a', 'arm64-v8a'
         }
     }
 
@@ -35,6 +25,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    externalNativeBuild {
+        cmake {
+            path "src/main/cpp/CMakeLists.txt"
+            version "3.22.1"
+        }
+    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -42,26 +38,11 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    externalNativeBuild {
-        cmake {
-            path file('src/main/cpp/CMakeLists.txt')
-            version '3.18.1'
-        }
-    }
-    buildFeatures {
-        viewBinding true
-    }
-    buildFeatures {
-        prefab true
-    }
 }
 
 dependencies {
-
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.material:material:1.5.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
-    implementation project(":jnihook")
-    implementation project(":jniTest")
 }

@@ -1,5 +1,6 @@
 #include "include/dispatchtable_hook.h"
 #include "include/jni_hook.h"
+#include "dl_symbol_search.h"
 #include <sys/mman.h>
 #include <malloc.h>
 #include <xdl.h>
@@ -8,13 +9,6 @@
 static struct MallocDispatch *dynamic;
 static const struct MallocDispatch *pika_dispatch_table;
 
-static void *find_symbol(void *handle, const char *sym_name) {
-    void *addr = xdl_sym(handle, sym_name, NULL);
-    if (NULL == addr) {
-        addr = xdl_dsym(handle, sym_name, NULL);
-    }
-    return addr;
-}
 
 void init_dispatch_table() {
     void *handle = xdl_open("libc.so", XDL_DEFAULT);

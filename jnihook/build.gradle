@@ -53,8 +53,8 @@ android {
         prefabPublishing true
         prefab true
     }
-    prefab{
-        jnihook{
+    prefab {
+        jnihook {
             headers "src/main/cpp/include"
         }
     }

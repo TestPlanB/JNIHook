@@ -36,11 +36,20 @@
         app:layout_constraintTop_toBottomOf="@+id/unhook" />
 
     <Button
+        android:id="@+id/register_native_call"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="注册registerNative监控"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/original_call" />
+
+    <Button
         android:id="@+id/entry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="进入dispatchtable hook"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
