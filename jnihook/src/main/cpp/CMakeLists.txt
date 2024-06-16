@@ -17,7 +17,8 @@ add_library( # Sets the name of the library.
         # Provides a relative path to your source file(s).
         jni_hook.c
         dispatchtable_hook.c
-        )
+        dl_symbol_search.c
+)
 find_library( # Sets the name of the path variable.
         log-lib
 

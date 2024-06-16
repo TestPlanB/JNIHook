@@ -7,14 +7,15 @@
 #include <sys/user.h>
 #include <dlfcn.h>
 
-enum dispatch_table_type{
+enum dispatch_table_type {
     MALLOC,
     CALLOC,
     FREE
 };
 
 void init_dispatch_table();
-int dispatch_table_hook(enum dispatch_table_type type, void *hook_func,void** callee);
+
+int dispatch_table_hook(enum dispatch_table_type type, void *hook_func, void **callee);
 
 #ifndef JNIHOOK_DISPATCHTABLE_HOOK_H
 #define JNIHOOK_DISPATCHTABLE_HOOK_H
@@ -96,8 +97,8 @@ struct libc_globals {
     struct vdso_entry vdso[VDSO_END];
     long setjmp_cookie;
     uintptr_t heap_pointer_tag;
-    _Atomic(bool) decay_time_enabled;
-    _Atomic(bool) memtag;
+    _Atomic (bool) decay_time_enabled;
+    _Atomic (bool) memtag;
 
     // In order to allow a complete switch between dispatch tables without
     // the need for copying each function by function in the structure,
@@ -108,13 +109,12 @@ struct libc_globals {
     // the old pointer must always stay valid.
     // The malloc_dispatch_table is modified by malloc debug, malloc hooks,
     // and heaprofd. Only one of these modes can be active at any given time.
-    _Atomic(const struct MallocDispatch*) current_dispatch_table;
+    _Atomic (const struct MallocDispatch *) current_dispatch_table;
     // This pointer is only used by the allocation limit code when both a
     // limit is enabled and some other hook is enabled at the same time.
-    _Atomic(const struct MallocDispatch*) default_dispatch_table;
+    _Atomic (const struct MallocDispatch *) default_dispatch_table;
     struct MallocDispatch malloc_dispatch_table;
 };
-
 
 
 #endif //JNIHOOK_DISPATCHTABLE_HOOK_H
