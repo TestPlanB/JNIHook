@@ -26,7 +26,7 @@ JniHook.jniHookInit()
 ```
 int hook_jni(JNIEnv *env, jobject method, void *new_entrance, void **origin_entrance)
 ```
-返回值：1（hook 成功） 0（当前已经hook） -1（hook失败）
+返回值：1（hook 成功） 0（当前已经hook） -1（hook失败） -2(当前jni函数还没有注册，可以通过注册RegisterNatives函数监听，见set_register_natives_call)
 ## unhook jni函数
 如果需要解除hook，调用unhook_jni
 * env:jni 环境 
@@ -35,6 +35,12 @@ int hook_jni(JNIEnv *env, jobject method, void *new_entrance, void **origin_entr
 ```
 void unhook_jni(JNIEnv *env, jobject method, void *origin_entrance)
 ```
+## set_register_natives_call 
+当jni 函数还未被加载时，此时hook_jni会返回无效状态-2，因此可以监听RegisterNatives 函数调用进行查看是否有需要的jni函数正在被注册，注册之后hook_jni才会返回1
+```
+void set_register_natives_call(register_native_call call)
+```
+
 
 
 
